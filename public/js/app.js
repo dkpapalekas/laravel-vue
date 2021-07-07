@@ -2029,6 +2029,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var default_layout = "default";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2040,7 +2041,8 @@ var default_layout = "default";
       lic_plate: '',
       brand: 'TOYOTA',
       model: 'RAV4',
-      km_tracker: '234675'
+      km_tracker: '234675',
+      id_to_del: ''
     };
   },
   methods: {
@@ -2070,7 +2072,7 @@ var default_layout = "default";
     },
     vehicleDelete: function vehicleDelete() {
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('/vehicledelete', {
-        id: 1
+        id: this.id_to_del
       });
     }
   }
@@ -49095,8 +49097,19 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("b-button", { on: { click: _vm.vehicleDelete } }, [
-        _vm._v("DELETE Vehicle with id 1")
+        _vm._v("DELETE Vehicle with id:")
       ]),
+      _vm._v(" "),
+      _c("b-form-input", {
+        attrs: { placeholder: "id to del" },
+        model: {
+          value: _vm.id_to_del,
+          callback: function($$v) {
+            _vm.id_to_del = $$v
+          },
+          expression: "id_to_del"
+        }
+      }),
       _vm._v(" "),
       _c("b-button", { on: { click: _vm.showAllVehicles } }, [
         _vm._v("Show all vehicles")
