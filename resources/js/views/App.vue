@@ -16,11 +16,12 @@
             }
         },
         mounted() {
-            axios.post('/test', {
+            /* axios.post('/test', {
                 email: 'test@test.com',
                 name: 'Flintstone',
                 password: '1234abcd'
-            })
+            }); */
+            axios.get('/gtest');
         }
     };
 </script>

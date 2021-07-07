@@ -15,4 +15,10 @@ class TestController extends Controller
         $x->save();
         return $x;
     }
+    public function show(Request $r) {
+        $users = User::where('id','=',1)->get();
+        //dd('mphkame');
+        return $users;
+    }
+
 }

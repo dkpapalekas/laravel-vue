@@ -10,6 +10,7 @@ Vue.use(BootstrapVue)
 
 // My Vue Files
 import App from './views/App.vue'
+import Cond from './views/Cond.vue'
 
 import axios from 'axios'
 axios.defaults.headers.common['Accept'] = 'application/json'
@@ -18,12 +19,16 @@ Vue.prototype.$http = axios
 
 let router = new VueRouter({
     mode: 'history',
-    base:'/',
+    base:'/app',
     routes: [
         {
             path: '/',
             component: App,
-        }
+        },
+        {
+            path: '/cond',
+            component: Cond,
+        },
     ]
 });
 
