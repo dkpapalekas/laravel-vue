@@ -11,6 +11,11 @@ Vue.use(BootstrapVue)
 // My Vue Files
 import App from './views/App.vue'
 
+import axios from 'axios'
+axios.defaults.headers.common['Accept'] = 'application/json'
+
+Vue.prototype.$http = axios
+
 let router = new VueRouter({
     mode: 'history',
     base:'/',
