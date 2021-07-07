@@ -12,6 +12,7 @@ Vue.use(BootstrapVue)
 import App from './views/App.vue'
 import Cond from './views/Cond.vue'
 import Fromaxios from './views/Fromaxios.vue'
+import NewVehicle from './views/NewVehicle.vue'
 
 import axios from 'axios'
 axios.defaults.headers.common['Accept'] = 'application/json'
@@ -33,6 +34,10 @@ let router = new VueRouter({
         {
             path: '/fromaxios',
             component: Fromaxios,
+        },
+        {
+            path: '/newvehicle',
+            component: NewVehicle,
         },
     ]
 });

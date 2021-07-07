@@ -17,6 +17,7 @@ class TestController extends Controller {
 
     public function show(Request $r) {
         $user = User::id(1)->get();
+        // throw new \Exception('memes beams');
         return $this->json($user);
     }
 }
