@@ -47,7 +47,9 @@
                 <b-table class='mx-3' striped hover :items="allVehicles" :fields='fields'></b-table>
             </b-row>
 
-
+            <b-row class='my-3'>
+                <b-button variant="danger" v-on:click="vehicleAllDelete">DELETE ALL</b-button>
+            </b-row>
 
     </div>
 </template>
@@ -78,8 +80,10 @@
                     brand: this.brand,
                     model: this.model,
                     km_tracker: this.km_tracker,
-                });
+                })
+                .then(this.showAllVehicles());
             },
+
             vehicleUpdate() {
                 axios.post('/vehicleupdate', {
                     id: this.id_upd,
@@ -87,25 +91,28 @@
                     brand: this.brand || null,
                     model: this.model || null,
                     km_tracker: this.km_tracker || null,
-                });
+                })
+                .then(this.showAllVehicles());
             },
+
             showAllVehicles() {
                 axios.get('/vehicles')
                 .then(r => {this.allVehicles = r.data})
             },
+
             vehicleDelete() {
                 axios.post('/vehicledelete', {
                     id: this.id_del,
                 });
             },
+
+            vehicleAllDelete() {
+                axios.post('/vehicleAlldelete')
+                .then(this.showAllVehicles());
+            },
         },
-        /* async mounted() {
-            axios.post('/vehicle', {
-                lic_plate: 'KPK2748',
-                brand: 'TOYOTA',
-                model: 'RAV4',
-                km_tracker: '234675',
-            });
-        } */
+        async mounted() {
+            this.showAllVehicles()
+        }
     };
 </script>

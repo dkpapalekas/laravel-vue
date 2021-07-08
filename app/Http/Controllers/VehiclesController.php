@@ -45,7 +45,7 @@ class VehiclesController extends Controller {
     public function index()
     {
         $vehs = Vehicle::all()->toArray();
-        return array_reverse($vehs);
+        return $vehs;
     }
 
     public function destroy(Request $r)
@@ -53,6 +53,12 @@ class VehiclesController extends Controller {
         $veh = Vehicle::find($r->id);
         $veh->delete();
 
+        return response()->json('veh deleted!');
+    }
+
+    public function trunc(Request $r)
+    {
+        Vehicle::truncate();
         return response()->json('veh deleted!');
     }
 

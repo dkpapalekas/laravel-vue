@@ -2015,8 +2015,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
 //
 //
 //
@@ -2090,44 +2100,56 @@ var default_layout = "default";
   },
   methods: {
     newVehicle: function newVehicle() {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/vehicle', {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post('/vehicle', {
         lic_plate: this.lic_plate,
         brand: this.brand,
         model: this.model,
         km_tracker: this.km_tracker
-      });
+      }).then(this.showAllVehicles());
     },
     vehicleUpdate: function vehicleUpdate() {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/vehicleupdate', {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post('/vehicleupdate', {
         id: this.id_upd,
         lic_plate: this.lic_plate || null,
         brand: this.brand || null,
         model: this.model || null,
         km_tracker: this.km_tracker || null
-      });
+      }).then(this.showAllVehicles());
     },
     showAllVehicles: function showAllVehicles() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/vehicles').then(function (r) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/vehicles').then(function (r) {
         _this.allVehicles = r.data;
       });
     },
     vehicleDelete: function vehicleDelete() {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/vehicledelete', {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post('/vehicledelete', {
         id: this.id_del
       });
+    },
+    vehicleAllDelete: function vehicleAllDelete() {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post('/vehicleAlldelete').then(this.showAllVehicles());
     }
-  }
-  /* async mounted() {
-      axios.post('/vehicle', {
-          lic_plate: 'KPK2748',
-          brand: 'TOYOTA',
-          model: 'RAV4',
-          km_tracker: '234675',
-      });
-  } */
+  },
+  mounted: function mounted() {
+    var _this2 = this;
 
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _this2.showAllVehicles();
+
+            case 1:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  }
 });
 
 /***/ }),
@@ -49773,6 +49795,22 @@ var render = function() {
               fields: _vm.fields
             }
           })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-row",
+        { staticClass: "my-3" },
+        [
+          _c(
+            "b-button",
+            {
+              attrs: { variant: "danger" },
+              on: { click: _vm.vehicleAllDelete }
+            },
+            [_vm._v("DELETE ALL")]
+          )
         ],
         1
       )
