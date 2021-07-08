@@ -1,13 +1,53 @@
 <template>
     <div>
-        <b-form-input v-model="lic_plate" placeholder="licence plate"></b-form-input>
-        <b-button v-on:click="newVehicle">Press to add Vehicle</b-button>
-        <b-button v-on:click="vehicleUpdate">Press to update Vehicle </b-button>
-        <b-form-input v-model="id_upd" placeholder="id upd"></b-form-input>
-        <b-button v-on:click="vehicleDelete">DELETE Vehicle with id 1</b-button>
-        <b-form-input v-model="id_del" placeholder="id del"></b-form-input>
-        <b-button v-on:click="showAllVehicles">Show all vehicles</b-button>
-        {{allVehicles}}
+            <b-row>
+                <b-col cols="6">
+                    <label class='w-100 my-1' for="input-default">Brand</label>
+                    <label class='w-100 my-1' for="input-default">Licence Plate</label>
+                    <label class='w-100 my-1' for="input-default">Model</label>
+                </b-col>
+                <b-col cols="6">
+                    <b-form-input v-model="brand" id="brand_input" placeholder="Brand"></b-form-input>
+                    <b-form-input v-model="lic_plate" id="lic_plate_input" placeholder="Licence Plate"></b-form-input>
+                    <b-form-input v-model="model" id="model_input" placeholder="Model"></b-form-input>
+                </b-col>
+            </b-row>
+            <b-row>
+                <b-button v-on:click="newVehicle">Press to add Vehicle</b-button>
+            </b-row>
+
+            <b-row>
+                <b-col cols="6">
+                    <label class='w-100 my-1' for="input-default">Id to update</label>
+                </b-col>
+                <b-col cols="6">
+                    <b-form-input v-model="id_upd" placeholder="id upd"></b-form-input>
+                </b-col>
+            </b-row>
+            <b-row>
+                <b-button v-on:click="vehicleUpdate">Press to update Vehicle </b-button>
+            </b-row>
+
+            <b-row>
+                <b-col cols="6">
+                    <label class='w-100 my-1' for="input-default">Id to DELETE</label>
+                </b-col>
+                <b-col cols="6">
+                    <b-form-input v-model="id_del" placeholder="id del"></b-form-input>
+                </b-col>
+            </b-row>
+            <b-row>
+                <b-button v-on:click="vehicleDelete">DELETE vehicle</b-button>
+            </b-row>
+
+            <b-row>
+                <b-button v-on:click="showAllVehicles">Show all vehicles</b-button>
+            </b-row>
+            <b-row>
+                {{allVehicles}}
+            </b-row>
+
+
 
     </div>
 </template>
@@ -23,8 +63,8 @@
                 allVehicles: [],
                 //todo: v-model for vars
                 lic_plate: '',
-                brand: 'TOYOTA',
-                model: 'RAV4',
+                brand: '',
+                model: '',
                 km_tracker: '234675',
                 id_upd: '',
                 id_del: '',
@@ -42,10 +82,10 @@
             vehicleUpdate() {
                 axios.post('/vehicleupdate', {
                     id: this.id_upd,
-                    lic_plate: 'UPD2748',
-                    brand: 'TOYOTA',
-                    model: 'RAV4',
-                    km_tracker: '234675',
+                    lic_plate: this.lic_plate,
+                    brand: this.brand,
+                    model: this.model,
+                    km_tracker: this.km_tracker,
                 });
             },
             showAllVehicles() {
