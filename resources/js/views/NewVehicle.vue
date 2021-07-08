@@ -2,8 +2,10 @@
     <div>
         <b-form-input v-model="lic_plate" placeholder="licence plate"></b-form-input>
         <b-button v-on:click="newVehicle">Press to add Vehicle</b-button>
-        <b-button v-on:click="vehicleUpdate">Press to update Vehicle with id 1</b-button>
+        <b-button v-on:click="vehicleUpdate">Press to update Vehicle </b-button>
+        <b-form-input v-model="id_upd" placeholder="id upd"></b-form-input>
         <b-button v-on:click="vehicleDelete">DELETE Vehicle with id 1</b-button>
+        <b-form-input v-model="id_del" placeholder="id del"></b-form-input>
         <b-button v-on:click="showAllVehicles">Show all vehicles</b-button>
         {{allVehicles}}
 
@@ -24,6 +26,8 @@
                 brand: 'TOYOTA',
                 model: 'RAV4',
                 km_tracker: '234675',
+                id_upd: '',
+                id_del: '',
             }
         },
         methods: {
@@ -37,7 +41,7 @@
             },
             vehicleUpdate() {
                 axios.post('/vehicleupdate', {
-                    id: 1,
+                    id: this.id_upd,
                     lic_plate: 'UPD2748',
                     brand: 'TOYOTA',
                     model: 'RAV4',
@@ -50,7 +54,7 @@
             },
             vehicleDelete() {
                 axios.post('/vehicledelete', {
-                    id: 1,
+                    id: this.id_del,
                 });
             },
         },
