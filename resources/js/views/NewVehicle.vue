@@ -1,6 +1,6 @@
 <template>
     <div>
-            <b-row>
+            <b-row class='my-3'>
                 <b-col cols="6">
                     <label class='w-100 my-1' for="input-default">Brand</label>
                     <label class='w-100 my-1' for="input-default">Licence Plate</label>
@@ -16,7 +16,7 @@
                 <b-button v-on:click="newVehicle">Press to add Vehicle</b-button>
             </b-row>
 
-            <b-row>
+            <b-row class='my-3'>
                 <b-col cols="6">
                     <label class='w-100 my-1' for="input-default">Id to update</label>
                 </b-col>
@@ -28,7 +28,7 @@
                 <b-button v-on:click="vehicleUpdate">Press to update Vehicle </b-button>
             </b-row>
 
-            <b-row>
+            <b-row class='my-3'>
                 <b-col cols="6">
                     <label class='w-100 my-1' for="input-default">Id to DELETE</label>
                 </b-col>
@@ -40,11 +40,11 @@
                 <b-button v-on:click="vehicleDelete">DELETE vehicle</b-button>
             </b-row>
 
-            <b-row>
+            <b-row class='my-3'>
                 <b-button v-on:click="showAllVehicles">Show all vehicles</b-button>
             </b-row>
             <b-row>
-                {{allVehicles}}
+                <b-table class='mx-3' striped hover :items="allVehicles" :fields='fields'></b-table>
             </b-row>
 
 
@@ -61,6 +61,7 @@
         data() {
             return {
                 allVehicles: [],
+                fields: ['id', 'lic_plate', 'brand', 'model', 'km_tracker'],
                 //todo: v-model for vars
                 lic_plate: '',
                 brand: '',
@@ -82,10 +83,10 @@
             vehicleUpdate() {
                 axios.post('/vehicleupdate', {
                     id: this.id_upd,
-                    lic_plate: this.lic_plate,
-                    brand: this.brand,
-                    model: this.model,
-                    km_tracker: this.km_tracker,
+                    lic_plate: this.lic_plate || null,
+                    brand: this.brand || null,
+                    model: this.model || null,
+                    km_tracker: this.km_tracker || null,
                 });
             },
             showAllVehicles() {

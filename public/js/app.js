@@ -2078,6 +2078,7 @@ var default_layout = "default";
   data: function data() {
     return {
       allVehicles: [],
+      fields: ['id', 'lic_plate', 'brand', 'model', 'km_tracker'],
       //todo: v-model for vars
       lic_plate: '',
       brand: '',
@@ -2099,10 +2100,10 @@ var default_layout = "default";
     vehicleUpdate: function vehicleUpdate() {
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('/vehicleupdate', {
         id: this.id_upd,
-        lic_plate: this.lic_plate,
-        brand: this.brand,
-        model: this.model,
-        km_tracker: this.km_tracker
+        lic_plate: this.lic_plate || null,
+        brand: this.brand || null,
+        model: this.model || null,
+        km_tracker: this.km_tracker || null
       });
     },
     showAllVehicles: function showAllVehicles() {
@@ -49588,6 +49589,7 @@ var render = function() {
     [
       _c(
         "b-row",
+        { staticClass: "my-3" },
         [
           _c("b-col", { attrs: { cols: "6" } }, [
             _c(
@@ -49664,6 +49666,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "b-row",
+        { staticClass: "my-3" },
         [
           _c("b-col", { attrs: { cols: "6" } }, [
             _c(
@@ -49706,6 +49709,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "b-row",
+        { staticClass: "my-3" },
         [
           _c("b-col", { attrs: { cols: "6" } }, [
             _c(
@@ -49748,6 +49752,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "b-row",
+        { staticClass: "my-3" },
         [
           _c("b-button", { on: { click: _vm.showAllVehicles } }, [
             _vm._v("Show all vehicles")
@@ -49756,9 +49761,21 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("b-row", [
-        _vm._v("\n            " + _vm._s(_vm.allVehicles) + "\n        ")
-      ])
+      _c(
+        "b-row",
+        [
+          _c("b-table", {
+            staticClass: "mx-3",
+            attrs: {
+              striped: "",
+              hover: "",
+              items: _vm.allVehicles,
+              fields: _vm.fields
+            }
+          })
+        ],
+        1
+      )
     ],
     1
   )
