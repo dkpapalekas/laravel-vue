@@ -51,6 +51,9 @@
                 <b-button variant="danger" v-on:click="vehicleAllDelete">DELETE ALL</b-button>
             </b-row>
 
+            <b-row class='my-3'>
+                <b-form-select v-model="selected" :options="allVehicles"></b-form-select>
+            </b-row>
     </div>
 </template>
 

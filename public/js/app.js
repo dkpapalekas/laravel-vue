@@ -2081,6 +2081,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 var default_layout = "default";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -49811,6 +49814,24 @@ var render = function() {
             },
             [_vm._v("DELETE ALL")]
           )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-row",
+        { staticClass: "my-3" },
+        [
+          _c("b-form-select", {
+            attrs: { options: _vm.allVehicles },
+            model: {
+              value: _vm.selected,
+              callback: function($$v) {
+                _vm.selected = $$v
+              },
+              expression: "selected"
+            }
+          })
         ],
         1
       )
