@@ -15,6 +15,7 @@ import App from './views/App.vue'
 import Cond from './views/Cond.vue'
 import Fromaxios from './views/Fromaxios.vue'
 import NewVehicle from './views/NewVehicle.vue'
+import DropSelect from './views/DropSelect.vue'
 
 import axios from 'axios'
 axios.defaults.headers.common['Accept'] = 'application/json'
@@ -40,6 +41,10 @@ let router = new VueRouter({
         {
             path: '/newvehicle',
             component: NewVehicle,
+        },
+        {
+            path: '/drop',
+            component: DropSelect,
         },
     ]
 });

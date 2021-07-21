@@ -30,7 +30,7 @@
 
             <b-row class='my-3'>
                 <b-col cols="6">
-                    <label class='w-100 my-1' for="input-default">Id to DELETE</label>
+                    <label class='w-100 my-1'  for="input-default">Id to DELETE</label>
                 </b-col>
                 <b-col cols="6">
                     <b-form-input v-model="id_del" placeholder="id del"></b-form-input>
