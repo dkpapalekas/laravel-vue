@@ -32,6 +32,19 @@ class CreateIterinariesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('iterinaries');
+        Schema::table('iterinaries', function (Blueprint $table) {
+            if (Schema::hasColumn('iterinaries', 'user_id'))
+            {
+                $table->dropForeign('iterinaries_user_id_foreign');
+                $table->dropColumn('user_id');
+            }
+            if (Schema::hasColumn('iterinaries', 'vehicle_id'))
+            {
+                $table->dropForeign('iterinaries_vehicle_id_foreign');
+                $table->dropColumn('vehicle_id');
+            }
+
+            $table->dropIfExists('iterinaries');
+        });
     }
 }
