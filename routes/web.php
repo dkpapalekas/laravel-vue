@@ -32,3 +32,4 @@ Route::post('/vehicle', 'App\Http\Controllers\VehiclesController@insert');
 Route::post('/vehicleupdate', 'App\Http\Controllers\VehiclesController@update');
 Route::get('/vehicles', 'App\Http\Controllers\VehiclesController@index');
 Route::post('/vehicledelete', 'App\Http\Controllers\VehiclesController@destroy');
+Route::post('/vehicleAlldelete', 'App\Http\Controllers\VehiclesController@trunc');
